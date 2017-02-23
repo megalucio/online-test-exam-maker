@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Refresh" th:content="${attempt.timeLeft} + '; URL=/results/' +${attempt.id}"/>
+</head>
+<body>
+	<p th:text="${question.title}" />
+
+	<form method="post" th:object="${questionModel}">
+		<div th:each="answer: ${answers}">
+			<input type="radio" name="answerId" th:value="${answer.id}"
+				th:text="${answer.text}" th:checked="${#sets.contains(attempt.answers, answer)}" /> 
+		</div>
+
+		<input th:if="${question.id - 1 > 0}" type="submit"
+			value="Previous" th:formaction="${question.id - 1}" /> 
+		<input type="submit" 
+			value="Next" th:formaction="${question.id + 1}" />
+	</form>
+</body>
+</html>
