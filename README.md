@@ -4,10 +4,15 @@ Demo project for Online Test Exam Maker
 ### Tools and Technologies ###
 
 Java 8
+
 Maven 3.3.9
+
 Spring Boot 1.5.1
-Hibernate 5.0.11.Final
+
+Hibernate 5.0.11
+
 H2 1.4 
+
 Thymeleaf 2.1.5
 
 ### Assumptions Made ###
