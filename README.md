@@ -20,15 +20,13 @@ Using thymeleaf templates as the view rendering technology.
 
 The test data provided only includes one exam therefore all attempts will be refered to the very same exam. However the design allows for more than one exam, you will only have to include a select in the index.html in order to choose from the different exams and do a forward with the appropriate exam id in order to accomplish this, however for simplicity reasons and considering this wasn't included in the requirements I decided not to include this.
 
-### Requirements not covered ### 
-
-Multiple choice questions logic is not implemented as of this version.
-
 ### Deployment ###
 
 All you need to do in order to deploy the application is execute the following:
 
-```./mvnw spring-boot:run
+```sh
+./mvnw spring-boot:run
+```
 
 This command will download all required dependencies and also initialize server and in memory DB accordingly so there is no need for any extra steps. Then you can access the application in http://localhost:8080/ to start a new exam.
 
