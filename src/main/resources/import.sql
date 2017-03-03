@@ -30,5 +30,5 @@ insert into exam_questions(exam_id, questions_id) values (1, 2);
 insert into exam_questions(exam_id, questions_id) values (1, 3);
 
 --User 1
-insert into user(username, full_name, password) values ('stork', 'Santiago Fernandez' , 'no1knows');
+insert into user(username, full_name, password) values ('candidate', 'Anonimous Candidate' , 'no1knows');
 

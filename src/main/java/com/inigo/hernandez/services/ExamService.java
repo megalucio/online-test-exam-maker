@@ -1,6 +1,9 @@
 package com.inigo.hernandez.services;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -94,6 +97,27 @@ public class ExamService {
 		}
 
 		attemptRepository.save(attempt);
+
+	}
+
+	public Map<Long, Boolean> getQuestionsAnswered(Long attemptId) {
+
+		Map<Long, Boolean> questionsAnswered = new HashMap<Long, Boolean>();
+
+		Attempt attempt = attemptRepository.findOne(attemptId);
+		Exam exam = examRepository.findOne(attempt.getExam().getId());
+
+		for (Question question : exam.getQuestions()) {
+			List<Answer> possibleAnswers = answerRepository.findByQuestionId(question.getId());
+
+			// None of the possible answers for this question was selected
+			if (Collections.disjoint(attempt.getAnswers(), possibleAnswers))
+				questionsAnswered.put(question.getId(), false);
+			else
+				questionsAnswered.put(question.getId(), true);
+		}
+
+		return questionsAnswered;
 
 	}
 

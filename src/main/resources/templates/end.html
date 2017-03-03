@@ -5,6 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+	
+	<p 
+		th:each="question: ${questionsAnswered}" 
+		th:if="${question.value == false}" 
+		th:text="'You did not provide an answer for question ' + ${question.key}" />
+	
+	<a th:href="'/questions/' + ${attempt.id} + '/1'">Return to Exam</a>
+	<br/>
 	<a th:href="'/results/' + ${attempt.id}">Submit Results</a>
+
 </body>
 </html>

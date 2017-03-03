@@ -1,6 +1,7 @@
 package com.inigo.hernandez.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -150,10 +151,12 @@ public class ExamController {
 	 */
 	@RequestMapping("/end/{attemptId}")
 	public String doEnd(@PathVariable("attemptId") Long attemptId, Model model) {
-
+		 
 		Attempt attempt = examService.getAttempt(attemptId);
+		Map<Long,Boolean> quesionsAnswered = examService.getQuestionsAnswered(attemptId);
 
 		model.addAttribute("attempt", attempt);
+		model.addAttribute("questionsAnswered", quesionsAnswered);
 
 		return "end";
 	}
